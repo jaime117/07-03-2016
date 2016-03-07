@@ -1,0 +1,33 @@
+help (AirPassengers)
+data ("AirPassengers")
+
+panam<- (AirPassengers)
+class (panam)
+start(panam); end (panam); frequency(panam)
+panam
+ppp<-ts(panam,start = c(1998,1), freq=4) ######funcion para declarar una base de datos como serie de tiempo
+x11()
+layout(1:2)
+plot(panam, main="numero de pasajeros aereos en estados unidos, 1949-1960", ylab="pasajeros (miles)", xlab="añs")
+plot (aggregate(panam)) ####agregar linea de tendencia
+
+######ejercicio
+###### 1) generar un data frame con la tasa de desocupacion que inicia en el primer
+###trimestre del 2005
+#### tasa de desocupacion 3.4, 4.8, 3.3, 5.6, 3.2, 2.9, 1.9, 2.8, 6.0, 4.3, 2.2
+#####2)convertirla en serie de tiempo y graficar la ST y la tendencia
+##### ****pto extra para segundo examen
+#### 3) obtener un pdf con las dos graficas en una misma imagen 
+
+
+tasa= c(3.4, 4.8, 3.3, 5.6, 3.2, 2.9, 1.9, 2.8, 6.0, 4.3, 2.2)
+año= c(20051,20052,20053,20054,20061,20062,20063,20064,20071,20072,20073)
+df=data.frame(tasa,año)
+class(df)
+df
+
+pdf("tarea.pdf")
+st<-ts(df,start = c(2005,1),freq=4)
+layout(1:2)
+plot (st, main="tasa de desocupacion", ylab="año", xlab="tasa")
+plot (aggregate(st))
